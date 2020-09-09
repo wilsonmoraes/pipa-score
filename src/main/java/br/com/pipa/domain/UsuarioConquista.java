@@ -7,24 +7,30 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
+import java.time.LocalDateTime;
 
 /**
  *
  */
-@Entity(name = "usuario")
+@Entity(name = "usuario_conquista")
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
 @Builder
-public class Usuario implements BaseEntity<Long> {
+public class UsuarioConquista implements BaseEntity<Long> {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    private String login;
-    private String senha;
+    @ManyToOne
+    private Usuario usuario;
+
+    private Long pontos;
+
     private String nome;
-    private Long totalPontos;
+
+    @Column
+    private LocalDateTime dateTimeAudit;
 
 }

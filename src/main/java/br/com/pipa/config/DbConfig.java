@@ -23,7 +23,7 @@ public class DbConfig {
         DriverManagerDataSource ds = new DriverManagerDataSource();
         ds.setDriverClassName("org.postgresql.Driver");
         /*ds.setUrl(format("jdbc:postgresql://%s:%s/%s", "192.168.10.22", 5433, "teste_wilson"));*/
-        ds.setUrl(format("jdbc:postgresql://%s:%s/%s", "localhost", 5432, "prevent_log"));
+        ds.setUrl(format("jdbc:postgresql://%s:%s/%s", "localhost", 5432, "pipa_score"));
         ds.setUsername("mymixtapez");
         ds.setPassword("xpto1234");
         return ds;
