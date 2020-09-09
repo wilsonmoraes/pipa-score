@@ -12,23 +12,23 @@ import java.time.LocalDateTime;
 /**
  *
  */
-@Entity(name = "usuario_conquista")
+@Entity(name = "user_achievement")
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
 @Builder
-public class UsuarioConquista implements BaseEntity<Long> {
+public class UsuerAchievement implements BaseEntity<Long> {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
     @ManyToOne
-    private Usuario usuario;
+    private UserPipa userPipa;
 
-    private Long pontos;
+    private Long points;
 
-    private String nome;
+    private String name;
 
     @Column
     private LocalDateTime dateTimeAudit;
