@@ -12,6 +12,7 @@
 
 Desenvolvimento de um mini back-end baseado em HTTP que registra pontos de diferentes usuários capaz de
 retornar a posição atual do usuário e a lista ordenada pela pontuação.
+Segue abaixo api's desenvolvidas:
 
 
 
