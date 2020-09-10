@@ -88,7 +88,7 @@ public class ControllerManager {
                 Sort.Order s_o = new Sort.Order(o.getDirection(), o.getProperty());
                 s_orders.add(s_o);
             }
-            return new Sort(s_orders);
+            return Sort.by(s_orders);
         } else {
             return null;
         }
