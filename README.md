@@ -11,8 +11,8 @@
 
 ## Introdução
 
-Desenvolvimento de um mini back-end baseado em HTTP que registra pontos de para diferentes usuários, com o
-capacidade de retornar a posição atual do usuário e a lista ordenada pela pontuação.
+Desenvolvimento de um mini back-end baseado em HTTP que registra pontos de diferentes usuários capaz de
+retornar a posição atual do usuário e a lista ordenada pela pontuação.
 
 ## Requisitos
 
