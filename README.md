@@ -1,12 +1,9 @@
 # <img src="https://github.com/tino097/awesome-spring-boot-rest-api/raw/master/spring-logo.png" align="absmiddle"/> Awesome Spring Boot Rest API For Pipa Score Test
 
-[![Wercker](https://img.shields.io/badge/spring--boot-2.0.1.RELEASE-green.svg?style=flat-square&logo=spring)](https://spring.io/projects/spring-boot)
+[![Wercker](https://img.shields.io/badge/spring--boot-2.3.3.RELEASE-green.svg?style=flat-square&logo=spring)](https://spring.io/projects/spring-boot)
 [![Wercker](https://img.shields.io/badge/java-8-blue.svg?style=flat-square&logo=java)](https://openjdk.java.net/install/)
 
 
-## Conteúdos
-
-1. [Introdução](#Introdução)
 
 ## Introdução
 
