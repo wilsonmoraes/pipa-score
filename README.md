@@ -7,19 +7,15 @@
 ## Conteúdos
 
 1. [Introdução](#Introdução)
-2. [Requisitos](#Requisitos)
 
 ## Introdução
 
 Desenvolvimento de um mini back-end baseado em HTTP que registra pontos de diferentes usuários capaz de
 retornar a posição atual do usuário e a lista ordenada pela pontuação.
 
-## Requisitos
 
-- Java 1.8+
-- Maven
 
-## API - Adicionar uma pontuação 
+## API para adicionar uma pontuação 
 
 ### Request
 
@@ -34,7 +30,7 @@ retornar a posição atual do usuário e a lista ordenada pela pontuação.
     Content-Length: 0
 
 
-## API - Obter posição do usuário 
+## API para obter a posição do usuário 
 
 ### Request
 
@@ -48,7 +44,7 @@ retornar a posição atual do usuário e a lista ordenada pela pontuação.
     Status: 302 Found
     Content-Length: 0
     
-## API - Listar usuários por ranking 
+## API para listar usuários por ranking 
 
 ### Request
 
