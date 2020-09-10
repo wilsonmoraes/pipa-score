@@ -9,10 +9,7 @@ import javax.sql.DataSource;
 
 import static java.lang.String.format;
 
-/**
- * @author romeh
- * the db spring configuration to use in production , to be replaced with actual production configuration , that is for local run only
- */
+
 @Configuration
 @EnableTransactionManagement
 public class DbConfig {

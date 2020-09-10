@@ -1,14 +1,15 @@
-package br.com.pipa.web.dto;
+package br.com.pipa.web.config.dto;
 
 import lombok.Builder;
 import lombok.ToString;
 
+
 /**
- * @author romeh
+ * @author Wilson M.
  */
 @Builder
 @ToString
 public class ErrorResponse {
 
-	private String message;
+    private String message;
 }

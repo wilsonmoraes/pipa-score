@@ -1,4 +1,4 @@
-package br.com.pipa.web.open.usuario;
+package br.com.pipa.web.controller.user;
 
 import br.com.pipa.common.mapper.BaseDTO;
 import io.swagger.annotations.ApiModel;
@@ -12,7 +12,7 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 @Data
 @ApiModel(description = "Post score.")
-public class PostScoreDto implements BaseDTO {
+public class PostAddScoreDto implements BaseDTO {
     private Long userId;
     private Long points;
 

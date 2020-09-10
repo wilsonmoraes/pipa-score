@@ -1,6 +1,6 @@
 
 
-package br.com.pipa.web.exception;
+package br.com.pipa.web.config.exception;
 
 import br.com.pipa.common.exception.BusinessException;
 import br.com.pipa.common.exception.UnauthorizedAcessException;

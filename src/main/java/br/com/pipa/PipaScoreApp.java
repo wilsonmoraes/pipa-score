@@ -1,6 +1,5 @@
 package br.com.pipa;
 
-import br.com.pipa.web.filter.YaeehFilter;
 import com.fasterxml.jackson.core.JsonParser;
 import com.fasterxml.jackson.databind.DeserializationContext;
 import com.fasterxml.jackson.databind.DeserializationFeature;
@@ -19,7 +18,6 @@ import org.modelmapper.ModelMapper;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.boot.builder.SpringApplicationBuilder;
-import org.springframework.boot.web.servlet.FilterRegistrationBean;
 import org.springframework.boot.web.servlet.support.SpringBootServletInitializer;
 import org.springframework.cache.annotation.EnableCaching;
 import org.springframework.context.annotation.Bean;
@@ -103,11 +101,11 @@ public class PipaScoreApp extends SpringBootServletInitializer {
         SpringApplication.run(PipaScoreApp.class, args);
     }
 
-    @Bean
+    /*@Bean
     public FilterRegistrationBean jwtFilter() {
         final FilterRegistrationBean registrationBean = new FilterRegistrationBean();
         registrationBean.setFilter(new YaeehFilter());
         registrationBean.addUrlPatterns("/api/**");
         return registrationBean;
-    }
+    }*/
 }

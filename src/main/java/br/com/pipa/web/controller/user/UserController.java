@@ -1,4 +1,4 @@
-package br.com.pipa.web.open.usuario;
+package br.com.pipa.web.controller.user;
 
 import br.com.pipa.service.UserService;
 import io.swagger.annotations.ApiOperation;
@@ -13,19 +13,32 @@ import java.util.Objects;
 
 
 @RestController
-@RequestMapping(value = "open/user", produces = MediaType.APPLICATION_JSON_VALUE)
+@RequestMapping(value = "user", produces = MediaType.APPLICATION_JSON_VALUE)
 public class UserController {
+
     @Autowired
     private UserService userService;
 
+    /**
+     * Endpoint utilizado para adicionar uma pontuação ao usuário
+     *
+     * @param request {@link PostAddScoreDto}
+     * @return ResponseEntity
+     */
     @ApiOperation("Adiciona uma pontuação ao usuário")
     @PostMapping
-    public ResponseEntity<Void> addScore(@RequestBody PostScoreDto request) {
+    public ResponseEntity<Void> addScore(@RequestBody PostAddScoreDto request) {
         userService.addScore(request.getUserId(), request.getPoints());
 
         return ResponseEntity.status(HttpStatus.CREATED).body(null);
     }
 
+    /**
+     * Método criado para retornar qual é a posição e pontuação atual do usuário
+     *
+     * @param usuarioId - identificador do usuário
+     * @return Map
+     */
     @GetMapping(value = "{usuarioId}/position")
     @ApiOperation("Retorna a posição do usuário e sua pontuação atual")
     public ResponseEntity<Map<String, Object>> getPosition(@PathVariable(value = "usuarioId") Long usuarioId) {
@@ -35,6 +48,11 @@ public class UserController {
                 .body(retorno);
     }
 
+    /**
+     * Método criado para listar os usuários por pontuação
+     *
+     * @return Map
+     */
     @GetMapping(value = "highscorelist")
     @ApiOperation("Retorna uma lista de usuários pela  posição com relação aos demais e sua pontuação atual")
     public ResponseEntity<Map<String, Object>> listHighScore() {
