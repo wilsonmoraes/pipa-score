@@ -67,7 +67,7 @@ public class UserService {
 
     }
 
-    public void addScore(Long usuarioId, Long pontos) {
+    public Long addScore(Long usuarioId, Long pontos) {
 
         User user = userRepository.findById(usuarioId).orElse(null);
         assert user != null;
@@ -82,6 +82,7 @@ public class UserService {
 
         user.setScore(user.getScore() + conquista.getPoints());
         userRepository.save(user);
+        return conquista.getId();
 
 
     }

@@ -2,7 +2,6 @@ package br.com.pipa.service;
 
 
 import br.com.pipa.config.IntegrationTest;
-import br.com.pipa.domain.AccessLog;
 import org.junit.Assert;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -15,18 +14,18 @@ import org.springframework.transaction.annotation.Transactional;
 @RunWith(SpringJUnit4ClassRunner.class)
 @IntegrationTest
 @Transactional
-public class AccessLogServiceTest {
+public class UserServiceTest {
 
     @Autowired
-    private AccessLogService accessLogService;
+    private UserService userService;
 
 
     @Test
     @Rollback
-    public void testSaveLog() {
-        AccessLog accessLog = AccessLog.builder().clientIP("wilson__..").build();
-        accessLog = accessLogService.save(accessLog);
-        Assert.assertNotNull(accessLog.getRegistrationDate());
+    public void testAddScore() {
+        userService.getPosition(11L);
+        Long val = userService.addScore(11L, 50L);
+        Assert.assertNotNull(val);
 
     }
 
