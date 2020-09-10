@@ -1,10 +1,10 @@
 package br.com.pipa.service;
 
 import br.com.pipa.common.exception.UnauthorizedAcessException;
-import br.com.pipa.dao.UserPipaRepository;
-import br.com.pipa.dao.UserPipaAchievementRepository;
-import br.com.pipa.domain.UserPipa;
-import br.com.pipa.domain.UsuerAchievement;
+import br.com.pipa.dao.UserRepository;
+import br.com.pipa.dao.UserAchievementRepository;
+import br.com.pipa.domain.User;
+import br.com.pipa.domain.UserAchievement;
 import br.com.pipa.utils.BusinessValidation;
 import io.jsonwebtoken.Claims;
 import io.jsonwebtoken.Jwts;
@@ -21,14 +21,14 @@ import static br.com.pipa.PipaScoreApp.JWT_SECRET;
 
 
 @Service
-public class UserPipaService {
+public class UserService {
 
 
     @Autowired
-    private UserPipaRepository userPipaRepository;
+    private UserRepository userRepository;
 
     @Autowired
-    private UserPipaAchievementRepository userPipaAchievementRepository;
+    private UserAchievementRepository userAchievementRepository;
 
     @Autowired
     private BusinessValidation validation;
@@ -50,12 +50,12 @@ public class UserPipaService {
     }
 
     public String login(String login, String senha) {
-        UserPipa userPipa = userPipaRepository.findUnicByLoginAndSenha(login, senha);
-        validation.throwIfNull(userPipa, "Usuário ou senha inválidos");
+        User user = userRepository.findUnicByLoginAndSenha(login, senha);
+        validation.throwIfNull(user, "Usuário ou senha inválidos");
 
-        Claims claims = Jwts.claims().setSubject(userPipa.getLogin());
-        claims.put("userId", String.valueOf(userPipa.getId()));
-        claims.put("userEmail", userPipa.getLogin());
+        Claims claims = Jwts.claims().setSubject(user.getLogin());
+        claims.put("userId", String.valueOf(user.getId()));
+        claims.put("userEmail", user.getLogin());
 
         LocalDateTime expiration = LocalDateTime.now().plusMinutes(120);
         ZonedDateTime zdt = expiration.atZone(ZoneId.systemDefault());
@@ -69,25 +69,25 @@ public class UserPipaService {
 
     public void addScore(Long usuarioId, Long pontos) {
 
-        UserPipa userPipa = userPipaRepository.findById(usuarioId).orElse(null);
-        assert userPipa != null;
+        User user = userRepository.findById(usuarioId).orElse(null);
+        assert user != null;
 
 
-        UsuerAchievement conquista = new UsuerAchievement();
+        UserAchievement conquista = new UserAchievement();
         conquista.setName("via API");
         conquista.setDateTimeAudit(LocalDateTime.now());
         conquista.setPoints(pontos);
-        conquista.setUserPipa(userPipa);
-        userPipaAchievementRepository.save(conquista);
+        conquista.setUser(user);
+        userAchievementRepository.save(conquista);
 
-        userPipa.setScore(userPipa.getScore() + conquista.getPoints());
-        userPipaRepository.save(userPipa);
+        user.setScore(user.getScore() + conquista.getPoints());
+        userRepository.save(user);
 
 
     }
 
     public Map<String, Object> getPosition(Long usuarioId) {
-        Map<String, Object> teste = userPipaRepository.findWithPosition(usuarioId);
+        Map<String, Object> teste = userRepository.findWithPosition(usuarioId);
         if (Objects.isNull(teste)) {
             return null;
         }
@@ -95,7 +95,7 @@ public class UserPipaService {
     }
 
     public Map<String, Object> listHighScore() {
-        List<Map<String, Object>> teste = userPipaRepository.listHighScore();
+        List<Map<String, Object>> teste = userRepository.listHighScore();
         if (Objects.isNull(teste)) {
             return null;
         }

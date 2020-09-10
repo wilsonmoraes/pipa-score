@@ -6,31 +6,28 @@ import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
-import javax.persistence.*;
-import java.time.LocalDateTime;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
 
 /**
  *
  */
-@Entity(name = "user_achievement")
+@Entity(name = "user")
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
 @Builder
-public class UsuerAchievement implements BaseEntity<Long> {
+public class User implements BaseEntity<Long> {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @ManyToOne
-    private UserPipa userPipa;
-
-    private Long points;
-
-    private String name;
-
-    @Column
-    private LocalDateTime dateTimeAudit;
+    private String login;
+    private String senha;
+    private String nome;
+    private Long score;
 
 }

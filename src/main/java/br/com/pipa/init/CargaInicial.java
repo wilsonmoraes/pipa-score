@@ -1,9 +1,9 @@
 package br.com.pipa.init;
 
-import br.com.pipa.dao.UserPipaAchievementRepository;
-import br.com.pipa.dao.UserPipaRepository;
-import br.com.pipa.domain.UserPipa;
-import br.com.pipa.domain.UsuerAchievement;
+import br.com.pipa.dao.UserAchievementRepository;
+import br.com.pipa.dao.UserRepository;
+import br.com.pipa.domain.User;
+import br.com.pipa.domain.UserAchievement;
 import org.apache.commons.lang3.RandomUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.ApplicationArguments;
@@ -14,31 +14,31 @@ import org.springframework.stereotype.Component;
 public class CargaInicial implements ApplicationRunner {
 
     @Autowired
-    private UserPipaRepository userPipaRepository;
+    private UserRepository userRepository;
 
     @Autowired
-    private UserPipaAchievementRepository userPipaAchievementRepository;
+    private UserAchievementRepository userAchievementRepository;
 
     public void run(ApplicationArguments args) {
-        if (userPipaRepository.count() == 0) {
+        if (userRepository.count() == 0) {
             for (int i = 0; i <= 10; i++) {
-                UserPipa userPipa = new UserPipa();
-                userPipa.setLogin("usuario_" + i);
-                userPipa.setSenha("teste");
-                userPipa.setNome("Usuario " + i);
-                userPipa.setScore(0L);
-                userPipa = userPipaRepository.save(userPipa);
+                User user = new User();
+                user.setLogin("usuario_" + i);
+                user.setSenha("teste");
+                user.setNome("Usuario " + i);
+                user.setScore(0L);
+                user = userRepository.save(user);
                 int z = 0;
                 while (z <= 4) {
-                    UsuerAchievement conquista = new UsuerAchievement();
+                    UserAchievement conquista = new UserAchievement();
                     conquista.setName("aleatória");
                     conquista.setPoints(RandomUtils.nextLong(10L, 50L));
-                    conquista.setUserPipa(userPipa);
-                    userPipaAchievementRepository.save(conquista);
-                    userPipa.setScore(userPipa.getScore() + conquista.getPoints());
+                    conquista.setUser(user);
+                    userAchievementRepository.save(conquista);
+                    user.setScore(user.getScore() + conquista.getPoints());
                     z++;
                 }
-                userPipaRepository.save(userPipa);
+                userRepository.save(user);
             }
 
         }

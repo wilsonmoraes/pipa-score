@@ -1,6 +1,6 @@
 package br.com.pipa.web.filter;
 
-import br.com.pipa.service.UserPipaService;
+import br.com.pipa.service.UserService;
 import org.springframework.web.filter.GenericFilterBean;
 
 import javax.servlet.FilterChain;
@@ -29,6 +29,6 @@ public class YaeehFilter extends GenericFilterBean {
      * @param request
      */
     protected void validateToken(final HttpServletRequest request) {
-        UserPipaService.parseToken(request.getHeader("Authorization"));
+        UserService.parseToken(request.getHeader("Authorization"));
     }
 }

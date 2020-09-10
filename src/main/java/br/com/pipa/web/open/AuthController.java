@@ -1,6 +1,6 @@
 package br.com.pipa.web.open;
 
-import br.com.pipa.service.UserPipaService;
+import br.com.pipa.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
@@ -18,12 +18,12 @@ import java.util.Map;
 @RequestMapping(value = "open/auth", produces = MediaType.APPLICATION_JSON_VALUE)
 public class AuthController {
     @Autowired
-    private UserPipaService userPipaService;
+    private UserService userService;
 
     @GetMapping(value = "/login")
     public ResponseEntity<Map<String, Object>> login(@RequestParam(value = "login") String login,
                                                      @RequestParam(value = "senha") String senha) {
-        String token = userPipaService.login(login, senha);
+        String token = userService.login(login, senha);
 
         return ResponseEntity.status(HttpStatus.OK)
                 .body(new HashMap<String, Object>() {{

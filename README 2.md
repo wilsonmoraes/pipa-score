@@ -34,4 +34,4 @@ http://localhost:8080/swagger-ui.html
 ```
 
 
-https://stackoverflow.com/questions/45028154/how-to-authenticate-with-spring-security-and-jwt-with-userPipa-of-own-database
+https://stackoverflow.com/questions/45028154/how-to-authenticate-with-spring-security-and-jwt-with-user-of-own-database

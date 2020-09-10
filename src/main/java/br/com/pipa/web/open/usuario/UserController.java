@@ -1,6 +1,6 @@
 package br.com.pipa.web.open.usuario;
 
-import br.com.pipa.service.UserPipaService;
+import br.com.pipa.service.UserService;
 import io.swagger.annotations.ApiOperation;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -16,12 +16,12 @@ import java.util.Objects;
 @RequestMapping(value = "open/user", produces = MediaType.APPLICATION_JSON_VALUE)
 public class UserController {
     @Autowired
-    private UserPipaService userPipaService;
+    private UserService userService;
 
     @ApiOperation("Adiciona uma pontuação ao usuário")
     @PostMapping
     public ResponseEntity<Void> addScore(@RequestBody PostScoreDto request) {
-        userPipaService.addScore(request.getUserId(), request.getPoints());
+        userService.addScore(request.getUserId(), request.getPoints());
 
         return ResponseEntity.status(HttpStatus.CREATED).body(null);
     }
@@ -29,7 +29,7 @@ public class UserController {
     @GetMapping(value = "{usuarioId}/position")
     @ApiOperation("Retorna a posição do usuário e sua pontuação atual")
     public ResponseEntity<Map<String, Object>> getPosition(@PathVariable(value = "usuarioId") Long usuarioId) {
-        Map<String, Object> retorno = userPipaService.getPosition(usuarioId);
+        Map<String, Object> retorno = userService.getPosition(usuarioId);
 
         return ResponseEntity.status(Objects.isNull(retorno) ? HttpStatus.NOT_FOUND : HttpStatus.OK)
                 .body(retorno);
@@ -38,7 +38,7 @@ public class UserController {
     @GetMapping(value = "highscorelist")
     @ApiOperation("Retorna uma lista de usuários pela  posição com relação aos demais e sua pontuação atual")
     public ResponseEntity<Map<String, Object>> listHighScore() {
-        Map<String, Object> retorno = userPipaService.listHighScore();
+        Map<String, Object> retorno = userService.listHighScore();
 
         return ResponseEntity.status(Objects.isNull(retorno) ? HttpStatus.NOT_FOUND : HttpStatus.OK)
                 .body(retorno);
