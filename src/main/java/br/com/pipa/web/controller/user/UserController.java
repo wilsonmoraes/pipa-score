@@ -44,7 +44,7 @@ public class UserController {
     public ResponseEntity<Map<String, Object>> getPosition(@PathVariable(value = "usuarioId") Long usuarioId) {
         Map<String, Object> retorno = userService.getPosition(usuarioId);
 
-        return ResponseEntity.status(Objects.isNull(retorno) ? HttpStatus.NOT_FOUND : HttpStatus.OK)
+        return ResponseEntity.status(Objects.isNull(retorno) ? HttpStatus.NOT_FOUND : HttpStatus.FOUND)
                 .body(retorno);
     }
 
@@ -58,7 +58,7 @@ public class UserController {
     public ResponseEntity<Map<String, Object>> listHighScore() {
         Map<String, Object> retorno = userService.listHighScore();
 
-        return ResponseEntity.status(Objects.isNull(retorno) ? HttpStatus.NOT_FOUND : HttpStatus.OK)
+        return ResponseEntity.status(Objects.isNull(retorno) ? HttpStatus.NOT_FOUND : HttpStatus.FOUND)
                 .body(retorno);
     }
 
